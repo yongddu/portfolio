@@ -1,0 +1,166 @@
+@charset "UTF-8";
+
+/* ******************** 페이지 로더 효과 ******************** */
+.page-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1.5s ease-out, visibility 1.5s ease-out;
+}
+
+.page-loader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-content {
+  text-align: center;
+}
+
+.loading-text {
+  color: #fff;
+  font-family: var(--font-en);
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+}
+
+/* 페이지 컨텐츠 초기 상태 */
+body {
+  opacity: 0;
+  transition: opacity 1s ease-in-out 0.5s;
+}
+
+body.loaded {
+  opacity: 1;
+}
+
+.top-nav .n01::after {
+  content: "";
+  display: block;
+  background: #000;
+  width: 100%;
+  height: 2px;
+}
+
+.top-nav .n01 {
+  font-style: italic;
+}
+/* ******************** item ******************** */
+.item {
+  position: absolute;
+  display: block;
+  transition: 0.4s ease;
+  object-fit: contain;
+}
+.item:hover {
+  filter: invert(1) blur(0.5px) url("#noise");
+}
+
+.hover-title {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 650;
+
+  display: block;
+  position: absolute;
+  transition: 0.4s ease;
+  left: 2.0833%;
+  bottom: 3.7037%; /* 화면 하단 여백 기준으로 고정 */
+  z-index: 10; /* 헤더/이미지 아래에 깔리지 않도록 */
+  pointer-events: none; /* 호버 인터랙션 방해 금지 */
+  color: #000;
+}
+
+.hover-date {
+  font-family: "Playfair Display", serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  position: absolute;
+  display: block;
+  transition: 0.4s ease;
+  bottom: 3.7037%;
+  left: 58.59375%;
+  z-index: 10;
+  pointer-events: none;
+  color: #000;
+}
+
+/* ******************** 1행 ******************** */
+.i1,
+.i2,
+.i3,
+.i4 {
+  top: calc(100px);
+  width: 8.6458vw;
+}
+.item.i1 {
+  left: 2.083333333333333%;
+}
+.item.i2 {
+  left: 42.44791666666667%;
+}
+.item.i3 {
+  left: 66.66666666666667%;
+}
+.item.i4 {
+  right: 2.0833%;
+}
+
+/* ******************** 2행 ******************** */
+.i5,
+.i6,
+.i7,
+.i8 {
+  top: calc(101px + 8.6458vw + 25px);
+  width: 8.6458vw;
+}
+.i5 {
+  left: 2.0833%;
+}
+.i6 {
+  left: 26.3021%;
+}
+.i7 {
+  left: 58.5938%;
+}
+.i8 {
+  right: 2.0833%;
+}
+
+/* ******************** 3행 ******************** */
+.i9,
+.i10 {
+  top: calc(101px + (8.6458vw + 11.71875vw) + (25px * 2));
+}
+.i9 {
+  width: 8.6458vw;
+  left: 10.4167%;
+}
+.i10 {
+  left: 42.4479%;
+  width: 15.2604vw;
+}

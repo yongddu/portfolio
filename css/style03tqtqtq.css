@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+body {
+  display: flex;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 20px;
+}
+/* 왼쪽 메뉴 */
+.menu {
+  width: 150px;
+  margin-right: 20px;
+}
+.menu div {
+  cursor: pointer;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.menu div.active {
+  background-color: #eee;
+  font-weight: bold;
+}
+/* 오른쪽 콘텐츠 */
+.content {
+  flex-grow: 1;
+  border: 1px solid #ccc;
+  padding: 10px;
+  min-height: 300px;
+}
+.content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 10px;
+}
+.content .desc {
+  font-size: 1.1em;
+}

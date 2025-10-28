@@ -1,0 +1,336 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  font-size: 62.5%;
+  --main-color-b: #000;
+  --main-color-w: #fff;
+  --font-s: "Playfair Display", serif;
+  --font-ss: "Roboto", sans-serif;
+}
+
+html {
+  zoom: 1; /* 기본 확대 기준 */
+}
+a {
+  color: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background: #000;
+  position: relative;
+}
+* {
+  color: #fff;
+}
+
+/* 전등 끄기 효과 */
+.light-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.1s ease-in;
+}
+
+.light-effect {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, transparent 0%, rgba(0, 0, 0, 0.97) 100%);
+  transform: translate(-50%, -50%);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.light-overlay.active {
+  opacity: 1;
+}
+
+.light-overlay.active .light-effect {
+  width: 300%;
+  height: 300%;
+}
+
+/* 페이지 콘텐츠 페이드인 효과 */
+body > *:not(.light-overlay) {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease-in, visibility 0s linear 0s;
+}
+
+body.content-visible > *:not(.light-overlay) {
+  opacity: 1;
+  visibility: visible;
+}
+.info {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+
+  top: 50px;
+  left: 2.0833%;
+  font-family: var(--font-ss);
+  color: #fff;
+  font-size: clamp(1.2rem, 1.6rem, 1.8rem);
+  font-weight: 650;
+  gap: 8px;
+  transform: 1.6rem;
+}
+.close,
+.gallery {
+  position: absolute;
+  top: 50px;
+  right: 2.0833%;
+  font-size: clamp(1.2rem, 1.6rem, 1.8rem);
+  font-weight: 650;
+  gap: 8px;
+  transform: 1.6rem;
+}
+.gallery {
+  top: 67px;
+}
+img {
+  position: absolute;
+  top: 18.5185vh;
+  right: 2.0833%;
+  width: 15.1042vw;
+}
+#header {
+  background: none;
+}
+
+h1 {
+  font-family: var(--font-ss);
+  font-weight: 650;
+  font-size: 4.8rem;
+  transform-origin: 0 0;
+}
+.edu {
+  position: absolute;
+  top: 18.51851851851852vh;
+  left: 2.08333333333%;
+}
+
+.edu-con {
+  position: absolute;
+  left: 2.0833%;
+  top: 28.98148148148148vh;
+
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+
+  font-family: var(--font-ss);
+  font-weight: 400;
+  font-size: 1.6rem;
+}
+
+.edu-con li {
+  display: flex;
+}
+
+.edu-con li .year {
+  margin-right: 10px;
+  text-align: right;
+}
+
+.edu-con li .month {
+  margin-right: 10px;
+  width: 40px;
+  text-align: right;
+}
+
+/* awards*********************** */
+.awa {
+  position: absolute;
+  top: 61.85185185185185vh;
+  left: 2.08333333333%;
+}
+.awards {
+  position: absolute;
+  top: 71.75925925925926vh;
+  left: 2.083333333333333%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+
+  font-family: var(--font-ss);
+  font-weight: 400;
+  font-size: 1.6rem;
+  transform-origin: 0 0;
+}
+.awards li {
+  display: flex;
+}
+
+.awards li .year {
+  margin-right: 10px;
+  text-align: right;
+}
+
+.awards li .month {
+  margin-right: 10px;
+  width: 40px;
+  text-align: right;
+}
+/* awards */
+.what {
+  width: 13vw;
+}
+.career {
+  position: absolute;
+  left: 63.75vw;
+  top: 61.8519vh;
+}
+.career-wrap {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: 63.75vw;
+  top: 71.7593vh;
+  gap: 22px;
+}
+.career-wrap .wrap,
+.cj {
+  display: flex;
+  font-family: var(--font-ss);
+  font-weight: 400;
+  font-size: 1.6rem;
+}
+.career-wrap .wrap .year,
+.sec-year {
+  margin-right: 10px;
+}
+.career-wrap .wrap .month,
+.sec-month {
+  margin-right: 10px;
+  width: 40px;
+  text-align: right;
+}
+.career-wrap .wrap .mul {
+  margin-right: 10px;
+  margin-left: 10px;
+
+  width: 40px;
+  text-align: center;
+}
+
+.skill {
+  position: absolute;
+  left: 63.75vw;
+  top: 82.1296vh;
+}
+/* ******************** 마우스 ******************** */
+.black-circle {
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  opacity: 0.8;
+  z-index: 999;
+  position: fixed;
+  left: 0;
+  top: 0;
+  margin-left: -6px;
+  margin-top: -6px;
+  transform-origin: 50% 50%;
+  pointer-events: none;
+  cursor: none;
+  will-change: transform;
+}
+.ghost {
+  position: fixed;
+  left: 0;
+  top: 0;
+  transform-origin: center center;
+  pointer-events: none;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#hippo {
+  display: none;
+}
+
+.inner-circle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0.1px;
+  height: 0.1px;
+  background: #131313;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.15);
+  opacity: 0.3;
+  transition: transform 1s cubic-bezier(0.4, 1.4, 0.6, 1),
+    opacity 0.25s cubic-bezier(0.4, 1.4, 0.6, 1), box-shadow 0.25s;
+  pointer-events: none;
+}
+
+body.hovering .black-circle .inner-circle {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  width: 8px;
+  height: 8px;
+  box-shadow: 0 0 18px 6px rgba(255, 255, 255, 0.35), 0 0 2px 1px #fff;
+}
+
+::selection {
+  background: #000;
+  color: #fff;
+}
+
+/* ******************** 마우스 ******************** */
+
+@media (max-height: 880px) {
+  .edu {
+    top: calc(18.51851851851852vh + 5vh);
+  }
+
+  .edu-con {
+    top: calc(28.98148148148148vh + 5vh);
+  }
+  .year,
+  .month,
+  .what,
+  .sang,
+  .sec-year,
+  .sec-month,
+  .cj {
+    font-size: 1.2rem;
+  }
+  .edu-con,
+  .awards {
+    gap: 15px;
+  }
+
+  .edu,
+  .awa,
+  .career,
+  .skill {
+    font-size: 3rem;
+  }
+}
+
+#canvas {
+  background-color: #fff;
+  width: 100vw;
+  height: 100vh;
+}
