@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/common.css" />
     <link rel="stylesheet" href="./css/textile1.css" />
-    <script type="module" src="./js/jquery-3.7.1.min.js"></script>
+    <script src="./js/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js"></script>
@@ -16,8 +16,8 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
-    <script src="./js/script01.js"></script>
     <script src="./js/mouse.js"></script>
+    <script src="./js/textile.js"></script>
   </head>
 
   <body>
@@ -29,21 +29,28 @@
         </div>
       </header>
 
-
-
-
-
-
-
-
-
+      <!-- ***********************스크롤 다운 화살표 *********************** -->
+      <div class="drag-down-text" id="dragDownText">
+        SCROLL DOWN
+        <svg
+          class="scroll-arrow"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 4L12 20M12 20L6 14M12 20L18 14"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            fill="none"
+          />
+        </svg>
+      </div>
 
       <div id="smooth-content">
-
-
-
-
-        <div class="wrap l1">
+        <!-- ***********************첫 번째 섹션 *********************** -->
+        <div class="wrap l1 first">
           <div class="img-wrap">
             <img src="./img/scaleUp/textile1.png" alt="" />
             <p>PROCREATE + PHOTOSHOP</p>
@@ -57,9 +64,10 @@
             </div>
           </div>
         </div>
+        <!-- ***********************두 번째 섹션 *********************** -->
         <div class="wrap r1">
           <div class="img-wrap">
-            <img src="./img/scaleUp/textile1.png" alt="" />
+            <img src="./img/scaleUp/textile2.png" alt="" />
             <p>PROCREATE + PHOTOSHOP</p>
           </div>
           <div class="explain-wrap">
@@ -71,6 +79,7 @@
             </div>
           </div>
         </div>
+        <!-- ***********************세 번째 섹션 *********************** -->
         <div class="wrap l1">
           <div class="img-wrap">
             <img src="./img/scaleUp/textile3.png" alt="" />
@@ -85,9 +94,10 @@
             </div>
           </div>
         </div>
+        <!-- ***********************네 번째 섹션 *********************** -->
         <div class="wrap r1">
           <div class="img-wrap">
-            <img src="./img/scaleUp/textile1.png" alt="" />
+            <img src="./img/scaleUp/textile4.png" alt="" />
             <p>PROCREATE + PHOTOSHOP</p>
           </div>
           <div class="explain-wrap">
@@ -99,22 +109,14 @@
             </div>
           </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
       </div>
 
-      <!-- fixed UI: smooth-content 밖으로 이동하여 transform 영향 제거 -->
+      <!-- ***********************마우스 모양 *********************** -->
       <div class="black-circle"><div class="inner-circle"></div></div>
       <div class="inner-circle"></div>
+
+      <!-- ******************** TOP 버튼 ******************** -->
+      <button class="top-btn" id="topBtn">TOP</button>
 
       <!--******************** 눈 감은 상태 (기본)******************** -->
       <svg
@@ -159,6 +161,5 @@
         <circle cx="500" cy="10" r="15" fill="#000" />
       </svg>
     </div>
-    <!-- /#smooth-wrapper -->
   </body>
 </html>

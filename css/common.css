@@ -1,6 +1,7 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+
 :root {
   font-size: 62.5%;
   --main-color-b: #000;
@@ -20,7 +21,7 @@
   display: none;
 }
 /* ******************** top-nav ******************** */
-
+/* ******************** top-nav ******************** */
 #header {
   position: fixed;
   top: 0;
@@ -32,7 +33,7 @@
   background: #fff;
 }
 #header.hide {
-  transform: translateY(-15vh); /* 헤더 높이와 무관하게 확실히 위로 숨김 */
+  transform: translateY(-15vh);
   pointer-events: none;
 }
 .top-nav .nav {
@@ -57,7 +58,7 @@
 .top-nav .about {
   right: 2.0833%;
 }
-
+/* ******************** 마우스 ******************** */
 /* ******************** 마우스 ******************** */
 .black-circle {
   width: 12px;
@@ -121,4 +122,3 @@ body.hovering .black-circle .inner-circle {
   color: #fff;
 }
 
-/* ******************** 마우스 ******************** */
