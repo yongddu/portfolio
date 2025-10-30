@@ -16,14 +16,47 @@ window.addEventListener("load", () => {
 document.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(TextPlugin, ScrambleTextPlugin, ScrollTrigger);
 
-  document.querySelectorAll(".item").forEach((item) => {
+  // ==================== 3D 회전 페이지 전환 ==================== //
+  const items = document.querySelectorAll(".item");
+  const transitionOverlay = document.getElementById("transitionOverlay");
+
+  items.forEach((item) => {
+    const link = item.parentElement;
+    const href = link.getAttribute("href");
+
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      // 클릭된 아이템의 현재 위치 저장
+      const rect = item.getBoundingClientRect();
+      item.style.top = `${rect.top}px`;
+      item.style.left = `${rect.left}px`;
+      item.style.width = `${rect.width}px`;
+      item.style.height = `${rect.height}px`;
+
+      // 클릭된 아이템에 회전 애니메이션 추가
+      item.classList.add("rotating");
+      document.body.classList.add("page-transition");
+
+      // 0.6초 후 오버레이 시작
+      setTimeout(() => {
+        transitionOverlay.classList.add("active");
+      }, 600);
+
+      // 1.2초 후 페이지 이동
+      setTimeout(() => {
+        window.location.href = href;
+      }, 1200);
+    });
+
+    // 호버 효과
     item.addEventListener("mouseenter", () => {
       const title = item.dataset.title;
       const date = item.dataset.date;
-      // GSAP로 애니메이션 적용
       gsap.to(".hover-title", { scrambleText: title, duration: 0.7 });
       gsap.to(".hover-date", { scrambleText: date, duration: 0.5 });
     });
+
     item.addEventListener("mouseleave", () => {
       gsap.to(".hover-title", { text: "", duration: 0.7 });
       gsap.to(".hover-date", { text: "", duration: 0.5 });

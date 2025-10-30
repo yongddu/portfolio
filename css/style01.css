@@ -164,3 +164,53 @@ body.loaded {
   left: 42.4479%;
   width: 15.2604vw;
 }
+
+/* ==================== 3D 회전 페이지 전환 효과 ==================== */
+body.page-transition {
+  overflow: hidden;
+}
+
+.transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease;
+}
+
+.transition-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.item {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.item.rotating {
+  position: fixed !important;
+  animation: rotate3DExpand 1.2s ease-in-out forwards;
+  z-index: 9999;
+}
+
+@keyframes rotate3DExpand {
+  0% {
+    transform: perspective(1000px) rotateY(0deg) scale(1);
+  }
+  40% {
+    transform: perspective(1000px) rotateY(180deg) scale(1.5);
+  }
+  60% {
+    transform: perspective(1000px) rotateY(360deg) scale(3);
+  }
+  100% {
+    transform: perspective(1000px) rotateY(720deg) scale(15);
+    opacity: 1;
+  }
+}
