@@ -219,12 +219,12 @@ body.page-transition {
 
 .item {
   opacity: 0;
-  transform: scale(0.95);
+  transform: scale(0.5);
 }
 .item.show {
   opacity: 1;
   transform: scale(1);
-  transition: all 0.6s ease-in;
+  transition: all 0.6s ease-in-out;
 }
 @keyframes simpleFadeIn {
   from {
@@ -237,5 +237,5 @@ body.page-transition {
   }
 }
 .item.animate {
-  animation: simpleFadeIn 1s ease-out forwards;
+  animation: simpleFadeIn 1s ease-out;
 }

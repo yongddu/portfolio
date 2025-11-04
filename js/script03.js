@@ -20,18 +20,13 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
           window.__smoother = smoother;
         } catch (e) {}
-        console.log("✅ ScrollSmoother 성공!");
       } catch (e) {
-        console.log("❌ ScrollSmoother 실패:", e);
         if (wrapper) {
           wrapper.style.height = "auto";
           wrapper.style.overflow = "visible";
         }
       }
     } else {
-      console.log(
-        "⚠️ ScrollSmoother 로드되지 않음 - 네이티브 스크롤로 대체합니다."
-      );
       if (wrapper) {
         wrapper.style.height = "auto";
         wrapper.style.overflow = "visible";
@@ -65,7 +60,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (header) {
     window.addEventListener("scroll", onScroll);
-    console.log("✅ 헤더 효과 설정 완료!");
   }
 
   const projectData = {
@@ -180,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
         smoothInstance.scrollTo(0, { duration: duration / 1000 });
         setTimeout(() => {
           if (typeof callback === "function") callback();
-        }, duration + 20);
+        }, 0);
         return;
       } catch (e) {
         // 실패시 폴백으로 아래 애니메이션 사용
@@ -253,4 +247,43 @@ document.addEventListener("DOMContentLoaded", function () {
       smoothScrollToTop(700, () => showProjects(category));
     });
   });
+
+  // ==================== TOP 버튼 기능 ==================== //
+  const topBtn = document.getElementById("topBtn");
+  let isScrolling = false;
+
+  function updateTopButton() {
+    const scrollPercent =
+      window.pageYOffset /
+      (document.documentElement.scrollHeight - window.innerHeight);
+
+    if (scrollPercent > 0.5) {
+      topBtn.classList.add("show");
+    } else {
+      topBtn.classList.remove("show");
+    }
+  }
+
+  function onScrollForTopBtn() {
+    if (!isScrolling) {
+      requestAnimationFrame(() => {
+        updateTopButton();
+        isScrolling = false;
+      });
+      isScrolling = true;
+    }
+  }
+
+  // TOP 버튼 클릭 시 맨 위로 이동
+  topBtn.addEventListener("click", () => {
+    smoothScrollToTop(500);
+  });
+
+  // 스크롤 이벤트 리스너
+  window.addEventListener("scroll", onScrollForTopBtn);
+
+  // ScrollSmoother 사용 시에도 동작하도록
+  if (smoother) {
+    smoother.scrollTrigger?.addEventListener("update", updateTopButton);
+  }
 });

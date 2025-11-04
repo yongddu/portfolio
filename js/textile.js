@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
       smoother = ScrollSmoother.create({
         wrapper: "#smooth-wrapper",
         content: "#smooth-content",
-        smooth: 1.1,
+        smooth: 2,
         effects: true,
       });
     } catch (e) {}
@@ -98,14 +98,14 @@ document.addEventListener("DOMContentLoaded", () => {
           gsap.to(imgWrap, {
             x: 0,
             opacity: 1,
-            duration: 2,
+            duration: 1,
             ease: "power2.out",
             force3D: true,
           });
           gsap.to(explainWrap, {
             y: 0,
             opacity: 1,
-            duration: 2,
+            duration: 1,
             delay: 0.5,
             ease: "power2.out",
             force3D: true,
@@ -202,21 +202,25 @@ document.addEventListener("DOMContentLoaded", () => {
           });
         },
         onUpdate: (self) => {
-          if (animationComplete && !isTransitioning) {
-            if (self.progress >= 0.8 && self.direction === 1) {
+          if (!isTransitioning && animationComplete) {
+            if (self.progress >= 0.6 && self.direction === 1) {
               const nextWrap = document.querySelectorAll(".wrap")[index + 1];
               if (nextWrap) {
                 isTransitioning = true;
-                gsap.to(window, {
-                  scrollTo: nextWrap,
-                  duration: 0.8,
-                  ease: "power2.inOut",
-                  onComplete: () => {
-                    setTimeout(() => {
-                      isTransitioning = false;
-                    }, 300);
-                  },
-                });
+
+                if (smoother) {
+                  smoother.scrollTo(nextWrap, true);
+                } else {
+                  gsap.to(window, {
+                    scrollTo: nextWrap,
+                    duration: 1.2,
+                    ease: "power1.inOut",
+                  });
+                }
+
+                setTimeout(() => {
+                  isTransitioning = false;
+                }, 1200);
               }
             }
 
@@ -224,16 +228,20 @@ document.addEventListener("DOMContentLoaded", () => {
               const prevWrap = document.querySelectorAll(".wrap")[index - 1];
               if (prevWrap) {
                 isTransitioning = true;
-                gsap.to(window, {
-                  scrollTo: prevWrap,
-                  duration: 0.8,
-                  ease: "power2.inOut",
-                  onComplete: () => {
-                    setTimeout(() => {
-                      isTransitioning = false;
-                    }, 300);
-                  },
-                });
+
+                if (smoother) {
+                  smoother.scrollTo(prevWrap, true);
+                } else {
+                  gsap.to(window, {
+                    scrollTo: prevWrap,
+                    duration: 1.2,
+                    ease: "power1.inOut",
+                  });
+                }
+
+                setTimeout(() => {
+                  isTransitioning = false;
+                }, 1200);
               }
             }
           }
@@ -263,16 +271,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // TOP 버튼 클릭 시 맨 위로 이동
   topBtn.addEventListener("click", () => {
-    if (smoother) {
+    if (smoother && smoother.scrollTo) {
       // ScrollSmoother를 사용하는 경우
-      smoother.scrollTo(0, true, "power2.inOut");
+      smoother.scrollTo(0, true);
     } else {
-      // 일반 스크롤
+      // 일반 스크롤 (ScrollSmoother 없거나 문제 있을 때)
       gsap.to(window, {
-        scrollTo: 0,
+        scrollTo: { y: 0 },
         duration: 1,
         ease: "power2.inOut",
       });
     }
+
+    // 강제로 맨 위로 (백업)
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 100);
   });
 });
