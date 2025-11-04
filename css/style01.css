@@ -201,16 +201,41 @@ body.page-transition {
 
 @keyframes rotate3DExpand {
   0% {
-    transform: perspective(1000px) rotateY(0deg) scale(1);
+    transform: perspective(500px) rotateY(0deg) scale(1);
   }
   40% {
-    transform: perspective(1000px) rotateY(180deg) scale(1.5);
+    transform: perspective(500px) rotateY(30deg) scale(1.5);
   }
   60% {
-    transform: perspective(1000px) rotateY(360deg) scale(3);
+    transform: perspective(500px) rotateY(90deg) scale(3);
   }
   100% {
-    transform: perspective(1000px) rotateY(720deg) scale(15);
+    transform: perspective(500px) rotateY(360deg) scale(15);
     opacity: 1;
   }
+}
+
+/* ====================  랜덤 등장 애니메이션 ==================== */
+
+.item {
+  opacity: 0;
+  transform: scale(0.95);
+}
+.item.show {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 0.6s ease-in;
+}
+@keyframes simpleFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.item.animate {
+  animation: simpleFadeIn 1s ease-out forwards;
 }

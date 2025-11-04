@@ -9,8 +9,8 @@ window.addEventListener("load", () => {
 
     setTimeout(() => {
       pageLoader.style.display = "none";
-    }, 1500);
-  }, 1000);
+    }, 200);
+  });
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -41,12 +41,12 @@ document.addEventListener("DOMContentLoaded", () => {
       // 0.6초 후 오버레이 시작
       setTimeout(() => {
         transitionOverlay.classList.add("active");
-      }, 600);
+      }, 400);
 
       // 1.2초 후 페이지 이동
       setTimeout(() => {
         window.location.href = href;
-      }, 1200);
+      }, 1000);
     });
 
     // 호버 효과
@@ -99,4 +99,26 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
   }
+
+  // ==================== 랜덤 등장 애니메이션 ==================== //
+  function showImagesRandomly() {
+    const images = document.querySelectorAll(".item");
+    if (images.length === 0) {
+      return;
+    }
+    const shuffledImages = Array.from(images).sort(() => Math.random() - 0.5);
+    shuffledImages.forEach((img, index) => {
+      const delay = index * (200 + Math.random() * 100);
+      setTimeout(() => {
+        img.classList.add("animate");
+        setTimeout(() => {
+          img.classList.remove("animate");
+          img.classList.add("show");
+        }, 500);
+      }, delay);
+    });
+  }
+  setTimeout(() => {
+    showImagesRandomly();
+  }, 500);
 });
