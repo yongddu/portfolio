@@ -33,8 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 750);
 
   if (fullscreenBtn) {
-    fullscreenBtn.addEventListener("click", function () {
-      requestFullscreenAndOpenGallery();
+    fullscreenBtn.addEventListener("click", function (e) {
+      requestFullscreenAndOpenGallery(e.currentTarget);
     });
   }
 
@@ -71,45 +71,71 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // 전체화면 요청 및 갤러리 열기
-  function requestFullscreenAndOpenGallery() {
+  function requestFullscreenAndOpenGallery(buttonElement) {
     console.log("전체화면 요청 및 갤러리 열기"); // 디버깅용
 
-    // 먼저 브라우저 전체화면 요청
-    const elem = document.documentElement;
+    // 전환 효과 시작
+    if (window.fullscreenTransition) {
+      fullscreenTransition.animate(() => {
+        // 전환 효과가 끝나면 전체화면 요청 및 갤러리 열기
+        const elem = document.documentElement;
 
-    if (elem.requestFullscreen) {
-      elem
-        .requestFullscreen()
-        .then(() => {
+        if (elem.requestFullscreen) {
+          elem
+            .requestFullscreen()
+            .then(() => {
+              openGalleryModal();
+            })
+            .catch((err) => {
+              console.log("전체화면 실패, 갤러리만 열기:", err);
+              openGalleryModal();
+            });
+        } else if (elem.webkitRequestFullscreen) {
+          // Safari
+          elem.webkitRequestFullscreen();
+          setTimeout(openGalleryModal, 100);
+        } else if (elem.mozRequestFullScreen) {
+          // Firefox
+          elem.mozRequestFullScreen();
+          setTimeout(openGalleryModal, 100);
+        } else if (elem.msRequestFullscreen) {
+          // IE/Edge
+          elem.msRequestFullscreen();
+          setTimeout(openGalleryModal, 100);
+        } else {
+          // 전체화면 지원하지 않으면 갤러리만 열기
           openGalleryModal();
-        })
-        .catch((err) => {
-          console.log("전체화면 실패, 갤러리만 열기:", err);
-          openGalleryModal();
-        });
-    } else if (elem.webkitRequestFullscreen) {
-      // Safari
-      elem.webkitRequestFullscreen();
-      setTimeout(openGalleryModal, 100);
-    } else if (elem.mozRequestFullScreen) {
-      // Firefox
-      elem.mozRequestFullScreen();
-      setTimeout(openGalleryModal, 100);
-    } else if (elem.msRequestFullscreen) {
-      // IE/Edge
-      elem.msRequestFullscreen();
-      setTimeout(openGalleryModal, 100);
+        }
+      }, buttonElement);
     } else {
-      // 전체화면 지원하지 않으면 갤러리만 열기
-      openGalleryModal();
+      // fullscreenTransition이 없으면 바로 실행
+      const elem = document.documentElement;
+      if (elem.requestFullscreen) {
+        elem
+          .requestFullscreen()
+          .then(() => {
+            openGalleryModal();
+          })
+          .catch((err) => {
+            console.log("전체화면 실패, 갤러리만 열기:", err);
+            openGalleryModal();
+          });
+      } else {
+        openGalleryModal();
+      }
     }
   }
 
   // 갤러리 모달 열기
   function openGalleryModal() {
     console.log("갤러리 모달 열기"); // 디버깅용
-    fullscreenGallery.classList.add("active");
+    fullscreenGallery.style.display = "flex";
     document.body.style.overflow = "hidden"; // 스크롤 방지
+
+    // 약간의 지연 후 opacity를 1로 변경하여 부드럽게 페이드인
+    setTimeout(() => {
+      fullscreenGallery.classList.add("active");
+    }, 150);
   }
 
   // 갤러리 모달 닫기 및 전체화면 해제

@@ -14,8 +14,9 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
 
-    <script src="./js/gallery.js"></script>
-    <script src="./js/mouse.js"></script>
+    <script defer src="./js/fullscreen-effect.js"></script>
+    <script defer src="./js/mouse.js"></script>
+    <script defer src="./js/gallery.js"></script>
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/common.css" />
     <link rel="stylesheet" href="./css/gallery.css" />
@@ -30,9 +31,7 @@
           <div class="mast__text-container">
             <p class="mast__text js-spanize">
               여긴 갤러리 공간이고 전체화면ㅤㅤㅤㅤ에 최적화 되어있습니다.
-              ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
-               감사합니다.
-               -easter egg
+              ㅤㅤㅤㅤㅤㅤㅤㅤ 감사합니다. -easter egg
             </p>
             <button class="fullscreen-btn" id="fullscreenBtn" title="전체화면">
               <svg
@@ -102,11 +101,7 @@
             </div>
 
             <div class="img-wrapper">
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener"
-              >
+              <a href="#" target="_blank" rel="noopener">
                 <img src="./img/drawing/5.png" alt="" />
               </a>
             </div>

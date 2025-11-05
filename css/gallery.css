@@ -6,6 +6,34 @@
   box-sizing: border-box;
 }
 
+.fullscreen-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  display: none;
+  grid-template-columns: repeat(40, 1fr);
+  grid-template-rows: repeat(30, 1fr);
+  background-color: #fff;
+  pointer-events: none;
+}
+
+.transition-box {
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.5s linear, opacity 0.5s linear;
+}
+
+.transition-box.animate {
+  transform: scale(1);
+  opacity: 1;
+}
+
 body {
   margin: 0;
   width: 100%;
@@ -749,7 +777,7 @@ body {
 .fullscreen-btn {
   position: absolute;
   left: 51.5%;
-  bottom: 54%;
+  bottom: 44%;
   background: none;
   border: 1px solid #c5baba;
   color: #c5baba;
@@ -761,7 +789,7 @@ body {
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transform: translateX(20px);
+  transform: translateX(5px);
   pointer-events: none;
 }
 
@@ -907,13 +935,15 @@ body.hovering .black-circle .inner-circle {
   display: none;
   flex-direction: column;
   color: #fff;
-  animation: fadeIn 0.5s ease-in-out;
   overflow: hidden;
+  opacity: 0;
+  transition: opacity 1.5s ease-in;
 }
 
 .fullscreen-gallery.active {
   display: flex;
   overflow: hidden;
+  opacity: 1;
 }
 
 .gallery-header {
@@ -927,16 +957,16 @@ body.hovering .black-circle .inner-circle {
 .gallery-header h1 {
   font-family: var(--font-s);
   margin: 0;
-  font-size: 6.6rem;
+  font-size: 3rem;
 }
 
 .close-btn {
   background: none;
-  border: 2px solid #fff;
+  border: 1px solid #fff;
   color: #fff;
   font-size: 2rem;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   cursor: pointer;
   transition: all 0.3s ease;

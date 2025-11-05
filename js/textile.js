@@ -11,6 +11,43 @@ document.addEventListener("DOMContentLoaded", () => {
     ScrollTrigger,
     ScrollSmoother
   );
+  // *********************  스크롤 진행률 바 생성   ****************** //
+  // *********************  스크롤 진행률 바 생성   ****************** //
+  function createProgressBar() {
+    const progressBar = document.createElement("div");
+    progressBar.className = "scroll-progress-bar";
+
+    const progressFill = document.createElement("div");
+    progressFill.className = "scroll-progress-fill";
+
+    const progressText = document.createElement("span");
+    progressText.className = "scroll-progress-text";
+
+    progressFill.appendChild(progressText);
+    progressBar.appendChild(progressFill);
+    document.body.insertBefore(progressBar, document.body.firstChild);
+
+    return { progressFill };
+  }
+
+  // 진행률 바 생성
+  const { progressFill } = createProgressBar();
+
+  // 스크롤 진행률 업데이트 함수
+  function updateProgressBar() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const documentHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / documentHeight) * 100;
+    const roundedPercent = Math.round(scrollPercent);
+
+    progressFill.style.width = `${scrollPercent}%`;
+  }
+
+  // 스크롤 이벤트 리스너
+  window.addEventListener("scroll", updateProgressBar);
+  window.addEventListener("resize", updateProgressBar);
+
 
   /* ************************ ScrollSmoother ************************ */
   /* ************************ ScrollSmoother ************************ */

@@ -73,8 +73,11 @@ body.loaded {
 .item {
   position: absolute;
   display: block;
-  transition: 0.4s ease;
+  transition: transform 0.3s ease-out;
   object-fit: contain;
+  transform-style: preserve-3d;
+  will-change: transform;
+  z-index: 120;
 }
 .item:hover {
   filter: invert(1) blur(0.5px) url("#noise");
@@ -90,7 +93,7 @@ body.loaded {
   transition: 0.4s ease;
   left: 2.0833%;
   bottom: 3.7037%; /* 화면 하단 여백 기준으로 고정 */
-  z-index: 10; /* 헤더/이미지 아래에 깔리지 않도록 */
+  z-index: 100; /* 헤더/이미지 아래에 깔리지 않도록 */
   pointer-events: none; /* 호버 인터랙션 방해 금지 */
   color: #000;
 }
@@ -104,7 +107,7 @@ body.loaded {
   transition: 0.4s ease;
   bottom: 3.7037%;
   left: 58.59375%;
-  z-index: 10;
+  z-index: 100;
   pointer-events: none;
   color: #000;
 }
@@ -239,3 +242,4 @@ body.page-transition {
 .item.animate {
   animation: simpleFadeIn 1s ease-out;
 }
+
