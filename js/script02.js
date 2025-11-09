@@ -56,10 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
       gsap.to(".hover-title", { scrambleText: title, duration: 0.7 });
       gsap.to(".hover-date", { scrambleText: date, duration: 0.5 });
 
-      // 마우스 진입 즉시 3D 효과 시작
-      const rect = item.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+     
 
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
@@ -88,30 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
         rotateY: 0,
         scale: 1,
         ease: "power2.out",
-      });
-    });
-
-    // 호버 중 마우스 움직임에 따른 3D 효과
-    item.addEventListener("mousemove", (e) => {
-      const rect = item.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-
-      // 마우스 위치 기준으로 회전 각도 계산
-      const rotateX = ((y - centerY) / centerY) * -20;
-      const rotateY = ((x - centerX) / centerX) * 20;
-
-      // 3D 회전 적용 (즉각 반응)
-      gsap.to(item, {
-        duration: 0.1,
-        rotateX: rotateX,
-        rotateY: rotateY,
-        scale: 1.1,
-        transformPerspective: 800,
-        ease: "power1.out",
       });
     });
   });

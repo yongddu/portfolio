@@ -78,9 +78,12 @@ body.loaded {
   transform-style: preserve-3d;
   will-change: transform;
   z-index: 120;
+  perspective: 800px;
+  transform-origin: center center;
 }
 .item:hover {
   filter: invert(1) blur(0.5px) url("#noise");
+  z-index: 130;
 }
 
 .hover-title {
@@ -242,4 +245,3 @@ body.page-transition {
 .item.animate {
   animation: simpleFadeIn 1s ease-out;
 }
-
