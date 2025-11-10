@@ -1,3 +1,24 @@
+// ==================== 스크롤 프로그레스 바 ==================== //
+function updateScrollProgress() {
+  const scrollProgress = document.querySelector(".scroll-progress-bar");
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const documentHeight =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
+  const scrollPercentage = (scrollTop / documentHeight) * 100;
+
+  if (scrollProgress) {
+    scrollProgress.style.width = scrollPercentage + "%";
+  }
+}
+
+// 스크롤 이벤트 리스너
+window.addEventListener("scroll", updateScrollProgress);
+window.addEventListener("resize", updateScrollProgress);
+
+// 페이지 로드 시 초기화
+document.addEventListener("DOMContentLoaded", updateScrollProgress);
+
 // 페이지 로드 효과
 window.addEventListener("load", () => {
   const pageLoader = document.getElementById("pageLoader");
@@ -55,8 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const date = item.dataset.date;
       gsap.to(".hover-title", { scrambleText: title, duration: 0.7 });
       gsap.to(".hover-date", { scrambleText: date, duration: 0.5 });
-
-     
 
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
@@ -147,4 +166,33 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     showImagesRandomly();
   }, 500);
+
+  // ==================== TOP 버튼 기능 ==================== //
+  const topBtn = document.getElementById("topBtn");
+
+  // 스크롤 위치에 따라 TOP 버튼 표시/숨김
+  function toggleTopButton() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > 300) {
+      topBtn.classList.add("show");
+    } else {
+      topBtn.classList.remove("show");
+    }
+  }
+
+  // TOP 버튼 클릭 시 상단으로 스크롤
+  topBtn.addEventListener("click", () => {
+    gsap.to(window, {
+      duration: 1,
+      scrollTo: { y: 0 },
+      ease: "power2.out",
+    });
+  });
+
+  // 스크롤 이벤트에 TOP 버튼 토글 함수 추가
+  window.addEventListener("scroll", toggleTopButton);
+
+  // 초기 상태 설정
+  toggleTopButton();
 });

@@ -1,4 +1,24 @@
 @charset "UTF-8";
+
+/* ******************** 스크롤 프로그레스 바 ******************** */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 10001;
+  backdrop-filter: blur(10px);
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  background: #000;
+  width: 0%;
+  transition: width 0.1s ease-out;
+}
+
 .top-nav .n02::after {
   content: "";
   display: block;
@@ -10,7 +30,6 @@
   font-style: italic;
 }
 .item-wrap {
-    
   margin: 100px 2.083333333333333% 0 2.083333333333333%;
   display: flex;
   flex-direction: column;
@@ -69,5 +88,42 @@
   width: 41.6667vw;
 }
 .item-wrap {
-margin-bottom: 300px;
+  margin-bottom: 300px;
+}
+
+/* ==================== TOP 버튼 ==================== */
+.top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-family: var(--font-s);
+  font-size: 1.4rem;
+  font-weight: 600;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 10002;
+}
+
+.top-btn.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.top-btn:hover {
+  background-color: #333;
+  transform: scale(1.1);
+}
+
+.top-btn:active {
+  transform: scale(0.95);
 }

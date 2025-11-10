@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+#smooth-content {
+  display: flex;
+  justify-content: right;
+}
+.process-img {
+  margin-top: 100px;
+  width: 80vw;
+}
+.wrap {
+  position: fixed;
+  left: 4vw;
+  top: 40vh;
+  width: 11.5104vw;
+}
+.wrap img {
+  position: absolute;
+  position: relative;
+  width: 11.5104vw;
+}
+.wrap .button {
+  position: absolute;
+  bottom: -5vw;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 2.777777777777778vh;
+
+  font-size: 0.7vw;
+  font-weight: 650;
+  background: #000;
+  color: #fff;
+}

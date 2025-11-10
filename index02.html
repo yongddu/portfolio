@@ -21,6 +21,11 @@
   </head>
 
   <body>
+    <!-- 스크롤 프로그레스 바 -->
+    <div class="scroll-progress">
+      <div class="scroll-progress-bar"></div>
+    </div>
+
     <div id="smooth-wrapper">
       <header id="header">
         <div class="top-nav">
@@ -203,6 +208,9 @@
       <!-- fixed UI: smooth-content 밖으로 이동하여 transform 영향 제거 -->
       <div class="black-circle"><div class="inner-circle"></div></div>
       <div class="inner-circle"></div>
+
+      <!-- ******************** TOP 버튼 ******************** -->
+      <button class="top-btn" id="topBtn">TOP</button>
 
       <!--******************** 눈 감은 상태 (기본)******************** -->
       <svg
