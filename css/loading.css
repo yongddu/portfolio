@@ -1,5 +1,28 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Quattrocento+Sans);
+
+/* 초기 로딩 화면 */
+.initial-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000000;
+  pointer-events: auto;
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+.initial-loading.fade-out {
+  opacity: 0;
+}
+
 .loading {
   position: fixed;
   top: 0;
