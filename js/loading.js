@@ -14,9 +14,9 @@ window.onload = function () {
     // 3초 후에 페이드아웃 시작
     setTimeout(function () {
       loadingScreen.classList.add("fade-out");
-      
+
       // 페이드아웃 애니메이션 완료 후 제거
-      setTimeout(function() {
+      setTimeout(function () {
         document.body.removeChild(loadingScreen);
         // 방문 기록 저장
         sessionStorage.setItem("hasVisited", "true");
