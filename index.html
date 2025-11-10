@@ -6,6 +6,7 @@
     <title>Portfolio 01</title>
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/loading.css" />
     <link rel="stylesheet" href="./css/style01.css" />
     <script type="module" src="./js/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
@@ -16,13 +17,29 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
+    <script src="./js/loading.js"></script>
     <script src="./js/script01.js"></script>
 
     <script src="./js/mouse.js"></script>
   </head>
 
   <body>
-  
+    <!-- 로딩 화면 -->
+    <div class="initial-loading" id="initialLoading">
+      <div class="loading-spinner"></div>
+      <div class="loading">
+        <div class="loading-text">
+          <span class="loading-text-words">B</span>
+          <span class="loading-text-words">U</span>
+          <span class="loading-text-words">I</span>
+          <span class="loading-text-words">D</span>
+          <span class="loading-text-words">I</span>
+          <span class="loading-text-words">N</span>
+          <span class="loading-text-words">G</span>
+        </div>
+      </div>
+    </div>
+
     <div class="page-loader" id="pageLoader">
       <div class="loader-content"></div>
     </div>
@@ -119,6 +136,14 @@
         src="./img/10.jpg"
         alt="10"
     /></a>
+    <a href="./uiuxp.html"
+      ><img
+        class="item i12"
+        data-title="PRESTISSIMO"
+        data-date="QEGQE,135567"
+        src="./img/12.png"
+        alt="12"
+    /></a>
 
     <div class="hover-title"></div>
     <div class="hover-date"></div>
@@ -198,8 +223,6 @@
       />
       <circle cx="500" cy="10" r="15" fill="#000" />
     </svg>
-    <script>
-      
-    </script>
+    <script></script>
   </body>
 </html>

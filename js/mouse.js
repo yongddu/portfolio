@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 호버 상태 감지 및 처리
     const hovering = !!e.target.closest(
-      "a, button, input, textarea, select, [role='button']"
+      "a, button, input, textarea, select, [role='button'], .exp-toggle"
     );
 
     if (hovering !== state.isHovering) {

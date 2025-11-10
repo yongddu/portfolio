@@ -137,7 +137,52 @@
 
 .explain-wrap h2 {
   margin-top: 7.4074vh;
+  font-size: 1.6rem;
 }
+
+.explain-wrap h2.exp-toggle {
+  font-size: 3rem !important; /* h2 기본 스타일 덮어쓰기 */
+  font-weight: 400;
+}
+
+/* Expandable explanation toggle */
+.exp-toggle {
+  cursor: none; /* 커스텀 커서 사용 */
+  user-select: none;
+  display: inline-block;
+  font-weight: 800;
+  font-size: 4rem; /* 엄청 크게 */
+  line-height: 1;
+  color: #000;
+  background: transparent;
+  border: none;
+  padding: 0 4px;
+  transition: color 0.25s ease, transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.exp-toggle:hover {
+  transform: scale(1.15);
+  color: #333;
+}
+.exp-toggle:active {
+  transform: scale(0.9);
+}
+.exp-toggle[aria-expanded="true"] {
+  color: #222;
+}
+
+.exp-content {
+  height: 100%;
+  margin-top: 12px;
+  font-size: 1.6rem;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.35s ease, opacity 0.3s ease;
+}
+#exp-1 {
+line-height: 1.5;
+font-family: var(--font-ss);
+font-weight: 500;}
 
 .bottom-ex-wrap {
   display: flex;

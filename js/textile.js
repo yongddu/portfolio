@@ -48,7 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", updateProgressBar);
   window.addEventListener("resize", updateProgressBar);
 
-
   /* ************************ ScrollSmoother ************************ */
   /* ************************ ScrollSmoother ************************ */
   let smoother = null;
@@ -324,5 +323,37 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }, 100);
+  });
+
+  // ******************** 설명 토글 기능 ******************** //
+  document.querySelectorAll(".exp-toggle").forEach((btn) => {
+    const targetId = btn.getAttribute("data-target");
+    const content = document.getElementById(targetId);
+    if (!content) return;
+
+    // 초기 상태 세팅 (hidden 속성 제거하고 애니메이션 가능한 상태로)
+    content.hidden = false;
+    content.style.overflow = "hidden";
+    content.style.maxHeight = "0px";
+    content.style.opacity = "0";
+
+    btn.setAttribute("aria-expanded", "false");
+    btn.addEventListener("click", () => {
+      const isOpen = btn.getAttribute("aria-expanded") === "true";
+      if (isOpen) {
+        // 접기
+        content.style.maxHeight = "0px";
+        content.style.opacity = "0";
+        btn.textContent = "+";
+        btn.setAttribute("aria-expanded", "false");
+      } else {
+        // 펼치기 (내용 높이에 맞춰 부드럽게)
+        const full = content.scrollHeight;
+        content.style.maxHeight = full + "px";
+        content.style.opacity = "1";
+        btn.textContent = "−";
+        btn.setAttribute("aria-expanded", "true");
+      }
+    });
   });
 });
