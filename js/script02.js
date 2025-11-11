@@ -195,4 +195,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 초기 상태 설정
   toggleTopButton();
+
+  // ==================== Nav Underline 이동 효과 (index02) ==================== //
+  const navLinks02 = document.querySelectorAll(
+    ".top-nav .nav.n01, .top-nav .nav.n02, .top-nav .nav.n03"
+  );
+  const underline02 = document.getElementById("navUnderline");
+  const topNav02 = document.querySelector(".top-nav");
+
+  function moveUnderline02(target) {
+    if (!underline02 || !topNav02 || !target) return;
+    const navRect = topNav02.getBoundingClientRect();
+    const linkRect = target.getBoundingClientRect();
+    const left = linkRect.left - navRect.left;
+    const width = linkRect.width;
+
+    gsap.to(underline02, {
+      left,
+      width,
+      duration: 0.5,
+      ease: "power2.out",
+    });
+  }
+
+  // 초기 위치는 n02
+  const initial02 = document.querySelector(".top-nav .nav.n02");
+  moveUnderline02(initial02);
+
+  navLinks02.forEach((link) => {
+    link.addEventListener("mouseenter", () => moveUnderline02(link));
+    link.addEventListener("focus", () => moveUnderline02(link));
+    link.addEventListener("click", () => moveUnderline02(link));
+  });
 });

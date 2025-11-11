@@ -174,4 +174,37 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     showImagesRandomly();
   }, 500);
+
+  // ==================== Nav Underline 이동 효과 ==================== //
+  const navLinks = document.querySelectorAll(".top-nav .nav.n01, .top-nav .nav.n02, .top-nav .nav.n03");
+  const underline = document.getElementById("navUnderline");
+  const topNav = document.querySelector(".top-nav");
+
+  function moveUnderline(target) {
+    if (!underline || !topNav || !target) return;
+    const navRect = topNav.getBoundingClientRect();
+    const linkRect = target.getBoundingClientRect();
+    const left = linkRect.left - navRect.left;
+    const width = linkRect.width;
+
+    gsap.to(underline, {
+      left: left,
+      width: width,
+      duration: 0.5,
+      ease: "power2.out",
+    });
+  }
+
+  // 초기 위치: 01 (활성 페이지 추론 가능하면 변경)
+  const initial = document.querySelector(".top-nav .nav.n01");
+  moveUnderline(initial);
+
+  navLinks.forEach((link) => {
+    link.addEventListener("mouseenter", () => moveUnderline(link));
+    link.addEventListener("focus", () => moveUnderline(link));
+    link.addEventListener("click", (e) => {
+      // 페이지 이동 전에 애니메이션; 동일 페이지라면 유지
+      moveUnderline(link);
+    });
+  });
 });

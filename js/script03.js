@@ -62,6 +62,32 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("scroll", onScroll);
   }
 
+  // ==================== Nav Underline 이동 효과 (index03) ==================== //
+  const navLinks03 = document.querySelectorAll(
+    ".top-nav .nav.n01, .top-nav .nav.n02, .top-nav .nav.n03"
+  );
+  const underline03 = document.getElementById("navUnderline");
+  const topNav03 = document.querySelector(".top-nav");
+
+  function moveUnderline03(target) {
+    if (!underline03 || !topNav03 || !target) return;
+    const navRect = topNav03.getBoundingClientRect();
+    const linkRect = target.getBoundingClientRect();
+    const left = linkRect.left - navRect.left;
+    const width = linkRect.width;
+    gsap.to(underline03, { left, width, duration: 0.5, ease: "power2.out" });
+  }
+
+  // 초기 위치는 n03
+  const initial03 = document.querySelector(".top-nav .nav.n03");
+  moveUnderline03(initial03);
+
+  navLinks03.forEach((link) => {
+    link.addEventListener("mouseenter", () => moveUnderline03(link));
+    link.addEventListener("focus", () => moveUnderline03(link));
+    link.addEventListener("click", () => moveUnderline03(link));
+  });
+
   const projectData = {
     UIUX: [
       {

@@ -37,6 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
     state.targetPath = elements.hippoPath.getAttribute("d");
 
     gsap.set([elements.circle, elements.ghost], { x: 0, y: 0 });
+
+    // 항상 커스텀 커서 활성화
     document.body.style.cursor = "none";
   };
 
