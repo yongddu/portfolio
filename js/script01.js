@@ -16,6 +16,46 @@ window.addEventListener("load", () => {
 document.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(TextPlugin, ScrambleTextPlugin, ScrollTrigger);
 
+  // 재방문 시 즉시 메인 콘텐츠 활성화
+  const hasVisited = sessionStorage.getItem("hasVisited");
+  if (hasVisited) {
+    console.log("재방문자 - 메인 콘텐츠 즉시 활성화");
+    // 헤더 즉시 표시
+    const header = document.querySelector("header");
+    if (header) {
+      header.style.display = "block";
+      header.style.opacity = "1";
+    }
+
+    // 메인 콘텐츠 활성화
+    document.body.classList.add("main-active");
+  }
+
+  // 재방문자를 위한 스킵 이벤트 리스너
+  window.addEventListener("skipToMain", () => {
+    console.log("메인으로 즉시 이동");
+    showMainContent();
+  });
+
+  // 메인 콘텐츠 표시 함수
+  function showMainContent() {
+    console.log("메인 콘텐츠 활성화");
+
+    // 헤더 표시
+    const header = document.querySelector("header");
+    if (header) {
+      header.style.display = "block";
+      header.style.opacity = "1";
+      header.classList.remove("hide");
+    }
+
+    // 메인 콘텐츠 활성화
+    document.body.classList.add("main-active");
+    document.body.style.position = "fixed";
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+  }
+
   // ==================== 3D 회전 페이지 전환 ==================== //
   const items = document.querySelectorAll(".item");
   const transitionOverlay = document.getElementById("transitionOverlay");

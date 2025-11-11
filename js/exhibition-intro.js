@@ -8,7 +8,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   console.log("Exhibition Intro 로드됨");
 
-  // 로딩이 완료되면 인트로 표시
+  // 재방문 시 스킵 처리
+  const hasVisited = sessionStorage.getItem("hasVisited");
+  if (hasVisited) {
+    console.log("재방문 감지 - 인트로 스킵");
+    if (exhibitionIntro) {
+      exhibitionIntro.style.display = "none";
+    }
+    return; // 인트로 관련 코드 실행 안함
+  }
+
+  // 로딩이 완료되면 인트로 표시 (첫 방문자만)
   window.addEventListener("loadingComplete", () => {
     console.log("로딩 완료 - 인트로 표시");
     showExhibitionIntro();
