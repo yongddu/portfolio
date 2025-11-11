@@ -1,18 +1,22 @@
 @charset "UTF-8";
-
+html {
+  background: #fff;
+}
 #smooth-content {
   display: flex;
   justify-content: right;
 }
 .process-img {
-  margin-top: 100px;
+  margin-top: 158px;
   width: 80vw;
 }
 .wrap {
+  
   position: fixed;
   left: 4vw;
   top: 40vh;
   width: 11.5104vw;
+  z-index: 100;
 }
 .wrap img {
   position: absolute;
@@ -25,10 +29,13 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80%;
-  height: 2.777777777777778vh;
+  height: 4vh;
 
-  font-size: 0.7vw;
+  font-size: 0.8vw;
   font-weight: 650;
   background: #000;
   color: #fff;
+}
+.top-btn {
+  filter: invert(1);
 }
