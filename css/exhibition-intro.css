@@ -8,12 +8,17 @@
   width: 100vw;
   height: 100vh;
   background: linear-gradient(135deg, #fff 0%, #fff 100%);
-  z-index: 9998;
+  z-index: 9998; /* 원래대로 높게 설정 */
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.5s ease, visibility 0.5s ease;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden; /* ScrollSmoother가 처리 */
+  /* ScrollSmoother 최적화 */
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .exhibition-intro.active {
@@ -27,10 +32,94 @@
   pointer-events: none;
 }
 
+/* ==================== 스크롤 프로그레스 바 ==================== */
+.scroll-progress-bar {
+  position: fixed;
+  right: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10000;
+  width: 4px;
+  height: 60vh;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.exhibition-intro.active .scroll-progress-bar {
+  opacity: 1;
+}
+
+.progress-track {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+}
+
+.progress-fill {
+  position: absolute;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(to bottom, #000 0%, #666 100%);
+  border-radius: 2px;
+  transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-sections {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.section-dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.section-dot:nth-child(1) {
+  top: 0%;
+}
+.section-dot:nth-child(2) {
+  top: 33.33%;
+}
+.section-dot:nth-child(3) {
+  top: 66.66%;
+}
+.section-dot:nth-child(4) {
+  top: 100%;
+}
+
+.section-dot.active {
+  background: #000;
+  transform: translateX(-50%) scale(1.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.section-dot:hover {
+  background: #666;
+  transform: translateX(-50%) scale(1.1);
+}
+
 /* 스크롤 컨테이너 */
 .intro-scroll-container {
   width: 100%;
-  min-height: 100vh;
+  min-height: 400vh; /* 4배 높이로 충분한 스크롤 공간 확보 */
+  padding-bottom: 100px;
+  /* ScrollSmoother 최적화 */
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 /* 공통 섹션 스타일 */
@@ -49,6 +138,75 @@
 .intro-section.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* 섹션 내부 요소들의 개별 애니메이션 */
+.intro-section > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 페이드인 애니메이션 순서 */
+.intro-section.animate-in > *:nth-child(1) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+.intro-section.animate-in > *:nth-child(2) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
+
+.intro-section.animate-in > *:nth-child(3) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.5s;
+}
+
+.intro-section.animate-in > *:nth-child(4) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.7s;
+}
+
+.intro-section.animate-in > *:nth-child(5) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.9s;
+}
+
+.intro-section.animate-in > *:nth-child(6) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1.1s;
+}
+
+/* 특별한 요소들을 위한 추가 애니메이션 */
+.intro-section.animate-in .intro-title {
+  animation: titleFadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: 0.2s;
+}
+
+.intro-section.animate-in .intro-subtitle {
+  /* 간단하게 페이드인만 */
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s ease;
+  transition-delay: 0.3s;
+}
+
+@keyframes titleFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* 섹션 1 - 타이틀 */
@@ -154,17 +312,19 @@
 /* ENTER 버튼 */
 .intro-enter-btn {
   position: relative;
-  padding: 1.5rem 4rem;
-  font-family: var(--font-s), sans-serif;
-  font-size: 1.1rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  color: #000;
+
   background: transparent;
-  border: 2px solid #000;
+  border: 1px solid #000;
   cursor: pointer;
   overflow: hidden;
+  color: #000;
   transition: all 0.3s ease;
+}
+.intro-enter-btn span {
+  font-family: var(--font-ss), sans-serif;
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
 }
 
 .intro-enter-btn::before {
@@ -356,11 +516,10 @@
   content: "";
   position: absolute;
   right: 18%;
-  bottom: 15%;
+  bottom: 17%;
   height: 50px;
   width: 50px;
   background: #fff;
-
 }
 .intro-section.section-3 .explain1,
 .explain2,
@@ -369,23 +528,23 @@
   font-size: 1.5rem;
   line-height: 1.5;
   position: absolute;
-  left: 29.7%;
-  top: 9%;
+  left: 18.2%;
+  top: -1%;
   font-family: var(--font-ss);
   font-weight: 400;
 }
 .explain2 {
-  left: 45%;
+  left: 42.4%;
 }
 .explain3 {
-  left: 60.5%;
+  left: 66.8%;
 }
 .explain4 {
-  left: 79%;
+  left: 92%;
 }
 .explain5 {
   font-weight: 500;
-  font-size: 1.6rem;
+  font-size: 2rem;
   text-align: center;
   line-height: 1.8;
 }

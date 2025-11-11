@@ -1,5 +1,17 @@
 @charset "UTF-8";
 
+/* ******************** 기본 설정 ******************** */
+html {
+  scroll-behavior: auto;
+  height: 100%;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  /* position과 overflow는 JavaScript에서 동적으로 제어 */
+}
+
 /* ******************** 페이지 로더 효과 ******************** */
 .page-loader {
   position: fixed;

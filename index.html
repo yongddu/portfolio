@@ -34,6 +34,7 @@
           <span class="loading-text-words">B</span>
           <span class="loading-text-words">U</span>
           <span class="loading-text-words">I</span>
+          <span class="loading-text-words">L</span>
           <span class="loading-text-words">D</span>
           <span class="loading-text-words">I</span>
           <span class="loading-text-words">N</span>
@@ -50,10 +51,21 @@
 
     <!-- 전시회 인트로 -->
     <div class="exhibition-intro" id="exhibitionIntro">
+      <!-- 스크롤 프로그레스 바 -->
+      <div class="scroll-progress-bar">
+        <div class="progress-track"></div>
+        <div class="progress-fill" id="progressFill"></div>
+        <div class="progress-sections">
+          <div class="section-dot" data-section="0"></div>
+          <div class="section-dot" data-section="1"></div>
+          <div class="section-dot" data-section="2"></div>
+          <div class="section-dot" data-section="3"></div>
+        </div>
+      </div>
+
       <div class="intro-scroll-container">
         <!-- 섹션 1: 타이틀 -->
         <section class="intro-section section-1">
-          <h1 class="intro-title">K W O N</h1>
           <p class="intro-subtitle">K W O N</p>
           <div class="scroll-indicator">
             <span>SCROLL DOWN</span>
@@ -84,7 +96,7 @@
             <p class="explain1">01 : 액자 형태<br />↓ 클릭시 이동</p>
             <p class="explain2">02 : 세로배치<br />↓ 클릭시 이동</p>
             <p class="explain3">03 : 카테고리<br />↓ 클릭시 이동</p>
-            <p class="explain4">ABOUT : 이력서 <br />↓ 클릭시 이동</p>
+            <p class="explain4">ABOUT : 이력서 <br />클릭시 이동 ↓</p>
             <img src="./img/2-12.png" alt="" />
             <p class="explain5">
               총 3섹션으로 나누어져있고 홈버튼은 01과 기능이 동일합니다.
@@ -95,9 +107,9 @@
 
         <!-- 섹션 4: 입장 버튼 -->
         <section class="intro-section section-4">
-          <h2 class="section-title">READY TO EXPLORE?</h2>
+          <h2 class="section-title">천천히 감상해주세요! 감사합니다.</h2>
           <button class="intro-enter-btn" id="introEnterBtn">
-            <span>ENTER EXHIBITION</span>
+            <span>ENTER</span>
           </button>
         </section>
       </div>
@@ -305,6 +317,7 @@
       />
       <circle cx="500" cy="10" r="15" fill="#000" />
     </svg>
+
     <script></script>
   </body>
 </html>

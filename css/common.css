@@ -27,10 +27,13 @@
   top: 0;
   width: 100%;
   height: 100px;
-  z-index: 30;
+  z-index: 30; /* 원래 값으로 복구 */
   transition: transform 0.5s ease;
   will-change: transform;
   background: #fff;
+  display: block; /* 명시적으로 block 설정 */
+  visibility: visible; /* 명시적으로 visible 설정 */
+  opacity: 1; /* 명시적으로 1 설정 */
 }
 #header.hide {
   transform: translateY(-15vh);
@@ -125,4 +128,3 @@ body.hovering .black-circle .inner-circle {
   background: #000;
   color: #fff;
 }
-

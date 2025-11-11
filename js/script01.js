@@ -116,27 +116,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ******************  ScrollSmoother (index02만 해당 요소가 있을 때)  ****************** //
-  let smoother = null;
-  if (
-    window.ScrollSmoother &&
-    document.querySelector("#smooth-wrapper") &&
-    document.querySelector("#smooth-content")
-  ) {
-    try {
-      gsap.registerPlugin(ScrollSmoother);
-      smoother = ScrollSmoother.create({
-        wrapper: "#smooth-wrapper",
-        content: "#smooth-content",
-        smooth: 1.1,
-        effects: true,
-      });
-    } catch (e) {
-      // noop
-    }
-  }
+  // ******************  메인 콘텐츠는 ScrollSmoother 사용 안함 (인트로에서만 사용)  ****************** //
+  // ScrollSmoother는 exhibition-intro.js에서 인트로용으로만 사용됩니다
 
-  // ******************  헤더: 스크롤 방향에 따라 숨김/표시 (ScrollTrigger 기반)  ****************** //
+  // ******************  헤더 제어 비활성화 (메인 페이지는 스크롤 없음)  ****************** //
+  // ScrollTrigger 헤더 제어 코드 비활성화 (스크롤이 없는 페이지에서는 헤더 항상 표시)
+  /*
   const header = document.querySelector("#header");
   if (header && window.ScrollTrigger) {
     ScrollTrigger.create({
@@ -152,6 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
   }
+  */
 
   // ==================== 랜덤 등장 애니메이션 ==================== //
   function showImagesRandomly() {
@@ -176,7 +162,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 500);
 
   // ==================== Nav Underline 이동 효과 ==================== //
-  const navLinks = document.querySelectorAll(".top-nav .nav.n01, .top-nav .nav.n02, .top-nav .nav.n03");
+  const navLinks = document.querySelectorAll(
+    ".top-nav .nav.n01, .top-nav .nav.n02, .top-nav .nav.n03"
+  );
   const underline = document.getElementById("navUnderline");
   const topNav = document.querySelector(".top-nav");
 
