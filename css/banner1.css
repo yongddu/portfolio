@@ -26,9 +26,10 @@
   gap: 30px;
 }
 html {
-background: #fff;}
+  background: #fff;
+}
 .inner-circle {
-  background: #000;;
+  background: #000;
 }
 .black-circle {
   background: #fff;
