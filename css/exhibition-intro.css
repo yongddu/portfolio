@@ -245,6 +245,8 @@
   font-size: 2rem;
   letter-spacing: 0.2em;
   color: #000;
+  text-align: center;
+  line-height: 1.5;;
 }
 
 .scroll-indicator svg {
@@ -528,19 +530,19 @@
   font-size: 1.5rem;
   line-height: 1.5;
   position: absolute;
-  left: 18.2%;
-  top: -1%;
+  left: 18%;
+  top: -2%;
   font-family: var(--font-ss);
   font-weight: 400;
 }
 .explain2 {
-  left: 42.4%;
+  left: 42.2%;
 }
 .explain3 {
-  left: 66.8%;
+  left: 66.6%;
 }
 .explain4 {
-  left: 92%;
+  left: 91%;
 }
 .explain5 {
   font-weight: 500;
