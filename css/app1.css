@@ -20,16 +20,5 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-html {
-background: #fff;}
-.inner-circle {
-  background: #000;;
-}
-.black-circle {
-  background: #fff;
-}
+.top-btn {
+filter:invert(0)}

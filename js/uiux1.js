@@ -119,6 +119,20 @@ window.addEventListener("load", function () {
     console.log("TOP 버튼 기능 적용 완료");
   }
 
+  /* ******************** 스크롤 프로그레스 바 ******************** */
+  const progressFill = document.querySelector(".progress-fill");
+  if (progressFill) {
+    ScrollTrigger.create({
+      start: 0,
+      end: "max",
+      onUpdate: (self) => {
+        const progress = self.progress * 100;
+        progressFill.style.width = progress + "%";
+      },
+    });
+    console.log("스크롤 프로그레스 바 적용 완료");
+  }
+
   // ScrollTrigger 새로고침
   ScrollTrigger.refresh();
 
