@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>KWON</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/textile1.css" />
+    <link rel="stylesheet" href="./css/uiux1.css" />
+    <link rel="stylesheet" href="./css/banner1.css" />
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MorphSVGPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrambleTextPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
+    <script src="./js/mouse.js?v=2"></script>
+    <script src="./js/uiux1.js?v=2"></script>
+  </head>
+
+  <body>
+    <!-- ***********************고정된 wrap *********************** -->
+    <div class="wrap">
+     <a href="./banner1.html"><img src="./img/banner/mu.png" alt=""></a>
+     <a href="./banner2.html"><img src="./img/banner/paso.png" alt=""></a>
+     <a href="./banner3.html"><img src="./img/banner/bud.png" alt=""></a>
+    </div>
+
+    <div id="smooth-wrapper">
+      <header id="header">
+        <div class="top-nav">
+          <a href="./index.html" class="nav home">HOME</a>
+          <a href="./about.html" class="nav about">ABOUT</a>
+        </div>
+      </header>
+
+      <div id="smooth-content">
+        <!-- ***********************첫 번째 섹션 *********************** -->
+
+        <img class="process-img" src="./img/banner/bannerpro2.png" alt="프로세스" />
+      </div>
+
+      <!-- ***********************마우스 모양 *********************** -->
+      <div class="black-circle"><div class="inner-circle"></div></div>
+      <div class="inner-circle"></div>
+
+      <!-- ******************** TOP 버튼 ******************** -->
+      <button class="top-btn" id="topBtn">TOP</button>
+
+      <!--******************** 눈 감은 상태 (기본)******************** -->
+      <svg
+        class="ghost"
+        width="50"
+        height="25"
+        viewBox="0 0 150 100"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill="#fff"
+          stroke="#000"
+          stroke-width="3"
+          d="
+    M 40 50
+    C 70 60, 130 60, 160 50
+    C 130 40, 70 40, 40 50
+    Z
+  "
+        />
+      </svg>
+
+      <!-- ********************눈 뜬 상태 (호버시)******************** -->
+      <svg
+        id="hippo"
+        width="50"
+        height="25"
+        viewBox="0 0 200 100"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill="#666"
+          stroke="#666"
+          stroke-width="3"
+          d="
+    M 40 50
+    C 60 20, 140 20, 160 50
+    C 140 80, 60 80, 40 50
+    Z
+  "
+        />
+        <circle cx="500" cy="10" r="15" fill="#000" />
+      </svg>
+    </div>
+  </body>
+</html>
