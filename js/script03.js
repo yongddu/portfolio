@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
       {
         image: "./img/2-10.jpg",
         title: "UIUX Project 1",
-        link: "./index03.html",
+        link: "./uiux1.html",
       },
       {
         image: "./img/2-11.jpg",
