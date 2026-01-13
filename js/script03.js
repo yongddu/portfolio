@@ -101,26 +101,26 @@ document.addEventListener("DOMContentLoaded", function () {
         link: "./index03.html",
       },
       {
-        image: "./img/2-10.jpg",
+        image: "./img/2-13.jpg",
         title: "UIUX Project 3",
-        link: "./index03.html",
+        link: "https://yongddu.github.io/---/",
       },
     ],
     BANNER: [
       {
-        image: "./img/2-10.jpg",
+        image: "./img/uiux2/1.jpg",
         title: "Banner Design 1",
-        link: "./index03.html",
+        link: "./banner3.html",
       },
       {
-        image: "./img/2-10.jpg",
+        image: "./img/uiux2/2.jpg",
         title: "Banner Design 2",
-        link: "./index03.html",
+        link: "./banner1.html",
       },
       {
-        image: "./img/2-10.jpg",
+        image: "./img/uiux2/3.jpg",
         title: "Banner Design 3",
-        link: "./index03.html",
+        link: "./banner2.html",
       },
     ],
     TEXTILE: [
@@ -155,17 +155,11 @@ document.addEventListener("DOMContentLoaded", function () {
         image: "./img/2-6.jpg",
         title: "Ceramic Art 2",
         link: "./index03.html",
-      },
-      {
-        image: "./img/2-6.jpg",
-        title: "Ceramic Art 3",
-        link: "./index03.html",
-      },
+      }
     ],
     "3D": [
       { image: "./img/2-4.jpg", title: "3D Design 1", link: "./index03.html" },
-      { image: "./img/2-4.jpg", title: "3D Design 2", link: "./index03.html" },
-      { image: "./img/2-4.jpg", title: "3D Design 3", link: "./index03.html" },
+   
     ],
     DINING: [
       {
