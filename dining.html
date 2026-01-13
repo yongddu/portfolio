@@ -29,120 +29,50 @@
           <a href="./about.html" class="nav about">ABOUT</a>
         </div>
       </header>
-
+      
       <!-- ***********************스크롤 다운 화살표 *********************** -->
-      <div class="drag-down-text" id="dragDownText">
-        SCROLL DOWN
-        <svg
-          class="scroll-arrow"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M12 4L12 20M12 20L6 14M12 20L18 14"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            fill="none"
-          />
-        </svg>
+      <div class="backback" id="backback">
+       NONE
+       <button onclick="history.back()">Back</button>
+       
       </div>
-
+      
       <div id="smooth-content">
         <!-- ***********************첫 번째 섹션 *********************** -->
-        <div class="wrap l1 first">
-          <div class="img-wrap">
-            <img src="./img/scaleUp/textile1.png" alt="" />
-            <p>PROCREATE + PHOTOSHOP</p>
-          </div>
-          <div class="explain-wrap">
-            <h1>COMPLICATED I</h1>
-            <h2>가나다라마바사아자차카타파</h2>
-            <div class="bottom-ex-wrap">
-              <h3>VERSION 1</h3>
-              <h4>JUNE, 2022</h4>
-            </div>
-          </div>
-        </div>
-        <!-- ***********************두 번째 섹션 *********************** -->
-        <div class="wrap r1">
-          <div class="img-wrap">
-            <img src="./img/scaleUp/textile2.png" alt="" />
-            <p>PROCREATE + PHOTOSHOP</p>
-          </div>
-          <div class="explain-wrap">
-            <h1>COMPLICATED I</h1>
-            <h2>가나다라마바사아자차카타파</h2>
-            <div class="bottom-ex-wrap">
-              <h3>VERSION 1</h3>
-              <h4>JUNE, 2022</h4>
-            </div>
-          </div>
-        </div>
-        <!-- ***********************세 번째 섹션 *********************** -->
-        <div class="wrap l1">
-          <div class="img-wrap">
-            <img src="./img/scaleUp/textile3.png" alt="" />
-            <p>PROCREATE + PHOTOSHOP</p>
-          </div>
-          <div class="explain-wrap">
-            <h1>COMPLICATED I</h1>
-            <h2>가나다라마바사아자차카타파</h2>
-            <div class="bottom-ex-wrap">
-              <h3>VERSION 1</h3>
-              <h4>JUNE, 2022</h4>
-            </div>
-          </div>
-        </div>
-        <!-- ***********************네 번째 섹션 *********************** -->
-        <div class="wrap r1">
-          <div class="img-wrap">
-            <img src="./img/scaleUp/textile4.png" alt="" />
-            <p>PROCREATE + PHOTOSHOP</p>
-          </div>
-          <div class="explain-wrap">
-            <h1>COMPLICATED I</h1>
-            <h2>가나다라마바사아자차카타파</h2>
-            <div class="bottom-ex-wrap">
-              <h3>VERSION 1</h3>
-              <h4>JUNE, 2022</h4>
-            </div>
-          </div>
-        </div>
+        
       </div>
-
+      
       <!-- ***********************마우스 모양 *********************** -->
       <div class="black-circle"><div class="inner-circle"></div></div>
       <div class="inner-circle"></div>
-
+      
       <!-- ******************** TOP 버튼 ******************** -->
       <button class="top-btn" id="topBtn">TOP</button>
-
+      
       <!--******************** 눈 감은 상태 (기본)******************** -->
       <svg
-        class="ghost"
-        width="50"
-        height="25"
-        viewBox="0 0 150 100"
-        xmlns="http://www.w3.org/2000/svg"
+      class="ghost"
+      width="50"
+      height="25"
+      viewBox="0 0 150 100"
+      xmlns="http://www.w3.org/2000/svg"
       >
-        <path
-          fill="#fff"
-          stroke="#000"
-          stroke-width="3"
-          d="
-    M 40 50
-    C 70 60, 130 60, 160 50
-    C 130 40, 70 40, 40 50
-    Z
-  "
-        />
-      </svg>
-
-      <!-- ********************눈 뜬 상태 (호버시)******************** -->
-      <svg
-        id="hippo"
+      <path
+      fill="#fff"
+      stroke="#000"
+      stroke-width="3"
+      d="
+      M 40 50
+      C 70 60, 130 60, 160 50
+      C 130 40, 70 40, 40 50
+      Z
+      "
+      />
+    </svg>
+    
+    <!-- ********************눈 뜬 상태 (호버시)******************** -->
+    <svg
+    id="hippo"
         width="50"
         height="25"
         viewBox="0 0 200 100"

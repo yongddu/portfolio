@@ -161,23 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
       { image: "./img/2-4.jpg", title: "3D Design 1", link: "./index03.html" },
    
     ],
-    DINING: [
-      {
-        image: "./img/2-6.jpg",
-        title: "Dining Project 1",
-        link: "./index03.html",
-      },
-      {
-        image: "./img/2-7.jpg",
-        title: "Dining Project 2",
-        link: "./index03.html",
-      },
-      {
-        image: "./img/2-8.jpg",
-        title: "Dining Project 3",
-        link: "./index03.html",
-      },
-    ],
+   
   };
 
   const categoryMenu = document.querySelector(".category-menu");
