@@ -25,6 +25,10 @@
   flex-direction: column;
   gap: 30px;
 }
+.wrap a:last-child {
+  margin-top: 20px;
+  margin-right: 10px;
+}
 html {
   background: #fff;
 }
